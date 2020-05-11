@@ -21,8 +21,7 @@ CPMAddPackage(
 CPMAddPackage(
   NAME EmGlue
   VERSION 0.4
-  #GITHUB_REPOSITORY TheLartians/EmGlue
-  SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/../../EmscriptenGlue
+  GITHUB_REPOSITORY TheLartians/EmGlue
 )
 
 # ---- Create wams glue library ----

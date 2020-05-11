@@ -33,7 +33,7 @@ jobs:
 
       - name: Publish
         if: github.ref == 'refs/heads/master'
-        uses: TheLartians/modern-wasm-starter@master
+        uses: mikeal/merge-release@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

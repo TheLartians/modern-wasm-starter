@@ -1,3 +1,5 @@
+# Publish new commits to npm. See https://github.com/mikeal/merge-release/blob/master/README.md for more info. 
+
 name: Publish
 
 on:

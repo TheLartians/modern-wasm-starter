@@ -14,7 +14,8 @@ This project should remove most of the boilerplate code required to create a mod
 - Automatic bindings and typescript declarations using the [Glue](https://github.com/TheLartians/Glue) library
 - Integrated test suite using [jest](https://jestjs.io)
 - Code formatting through [prettier](https://prettier.io)
-- Semi-automatic memory management using scoped 
+- Semi-automatic memory management using [scopes](#memory-management)
+- A [GitHub](.github/workflows/publish.yml) action that [publishes a new releases](https://github.com/mikeal/merge-release) to npm for each commit to master
 
 ## Usage
 
@@ -62,14 +63,16 @@ To simplify this, the project introduces scopes that semi-automatically take car
 ```ts
 import { withGreeter } from "modern-wasm-starter";
 
-withGreeter((greeterModule) => {
+// note: `withGreeter()` will run asynchronously and return a `Promise`
+withGreeter(greeterModule => {
   // construct a new C++ Greeter instance
   const greeter = new greeterModule.Greeter("Wasm");
 
   // call a member function
   console.log(greeter.greet(greeterModule.LanguageCode.EN));
+  
+  // any created instances will be deleted after the function returns (exception-safe)
 });
-// any created instances will be deleted at the end of the function (exception-safe)
 ```
 
 For additional techniques, such as local scopes or persisting values outside of the scope, see the [tests](__tests__/wasm.ts) or [API](source/wasmWrapper.ts).

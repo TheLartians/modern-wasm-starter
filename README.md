@@ -52,7 +52,7 @@ npm start
 
 ### Run prettier
 
-The following command will run prettier on the TypeScript source code.
+The following command will run prettier on the TypeScript and clang-format on the C++ source code.
 
 ```
 npm run fix:style

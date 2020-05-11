@@ -18,9 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - name: check style
-        run: yarn run check:style
-
       - uses: mymindstorm/setup-emsdk@v4
 
       - name: install
@@ -33,3 +30,6 @@ jobs:
 
       - name: test
         run: yarn run test
+
+      - name: check style
+        run: yarn run check:style

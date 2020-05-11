@@ -6,7 +6,7 @@
 #include "wasmGlue.h"
 
 int main() {
-  auto glueValue = greeterGlue();
+  auto glueValue = wasmGlue();
 
   glue::Context context;
   context.addRootMap(glueValue);

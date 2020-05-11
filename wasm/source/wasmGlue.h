@@ -2,4 +2,4 @@
 
 #include <glue/value.h>
 
-glue::MapValue greeterGlue();
+glue::MapValue wasmGlue();

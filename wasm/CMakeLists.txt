@@ -8,11 +8,21 @@ project(TypeScriptXX
 
 set(CMAKE_CXX_FLAGS_RELEASE "-Oz -g0")
 
+# ---- Fetch CPM ----
+
+set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM.cmake")
+set(CPM_VERSION 0.23)
+
+if(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
+  message(STATUS "Downloading CPM.cmake")
+  file(DOWNLOAD https://github.com/TheLartians/CPM.cmake/releases/download/v${CPM_VERSION}/CPM.cmake ${CPM_DOWNLOAD_LOCATION})
+endif(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
+
 # ---- Dependencies ----
 # Add C++ dependencies through CPM.cmake.
 # See https://github.com/TheLartians/CPM.cmake for more info.
 
-include(cmake/CPM.cmake)
+include(${CPM_DOWNLOAD_LOCATION})
 
 # add your dependency here and at `target_link_libraries` for wasmGlue below
 CPMAddPackage(

@@ -31,5 +31,8 @@
     "fix:style": "prettier --check \"./**/**[!.d].ts\"  --write",
     "test": "jest --config jestconfig.json"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "peerDependencies": {
+    "typescript": ">= 3.8.3"
+  }
 }

@@ -16,9 +16,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: mymindstorm/setup-emsdk@v4
-
       - uses: actions/checkout@v1
+
+      - name: check style
+        run: yarn run check:style
+
+      - uses: mymindstorm/setup-emsdk@v4
 
       - name: install
         run: yarn install

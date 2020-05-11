@@ -9,6 +9,8 @@ project(TypeScriptXX
 set(CMAKE_CXX_FLAGS_RELEASE "-Oz -g0")
 
 # ---- Dependencies ----
+# Add C++ dependencies through CPM.cmake.
+# See https://github.com/TheLartians/CPM.cmake for more info.
 
 include(cmake/CPM.cmake)
 

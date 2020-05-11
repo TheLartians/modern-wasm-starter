@@ -14,6 +14,7 @@ This project should remove most of the boilerplate code required to create a mod
 - Automatic bindings and typescript declarations using the [Glue](https://github.com/TheLartians/Glue) library
 - Integrated test suite using [jest](https://jestjs.io)
 - Code formatting through [prettier](https://prettier.io)
+- Semi-automatic memory management using scoped 
 
 ## Usage
 
@@ -52,3 +53,23 @@ The following command will run prettier on the TypeScript source code.
 ```
 npm run fix:style
 ```
+
+## Memory management
+
+As JavaScript has no destructors, any created C++ objects must be deleted manually, or your webapp will suffer a memory leak.
+To simplify this, the project introduces scopes that semi-automatically take care of memory management , that can be used as illustrated below.
+
+```ts
+import { withGreeter } from "modern-wasm-starter";
+
+withGreeter((greeterModule) => {
+  // construct a new C++ Greeter instance
+  const greeter = new greeterModule.Greeter("Wasm");
+
+  // call a member function
+  console.log(greeter.greet(greeterModule.LanguageCode.EN));
+});
+// any created instances will be deleted at the end of the function (exception-safe)
+```
+
+For additional techniques, such as local scopes or persisting values outside of the scope, see the [tests](__tests__/wasm.ts) or [API](source/wasmWrapper.ts).

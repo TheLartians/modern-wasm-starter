@@ -4,7 +4,7 @@
 # Modern WASM Starter
 
 A starter template to easily create WebAssembly projects for npm using type-safe C++ code with automatic declarations.
-This project should remove most of the boilerplate code required to create a modern type-safe WebAssembly project.
+This project should take care of most of the boilerplate code required to create a modern type-safe WebAssembly project.
 
 ## Features
 

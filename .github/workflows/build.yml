@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mymindstorm/setup-emsdk@v4
+
+      - uses: actions/checkout@v1
+
+      - name: install
+        run: yarn install
+
+      - name: build
+        run: |
+          yarn run build:wasm
+          yarn run build
+
+      - name: test
+        run: yarn run test

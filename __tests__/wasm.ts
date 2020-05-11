@@ -4,7 +4,9 @@ import {
   Greeter,
   persistGreeterValue,
   LanguageCode,
+  deleteGreeterValue,
 } from "../source";
+
 import {
   __getCurrentWasmScope,
   __getCurrentWasmScopeStackSize,
@@ -46,5 +48,6 @@ test("Persisting values", async () => {
     expect(__getCurrentWasmScope().length).toBe(0);
   }).then(() => {
     expect(greeter.greet(language)).toBe("Hello, Global!");
+    deleteGreeterValue(greeter);
   });
 });

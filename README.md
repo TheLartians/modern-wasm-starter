@@ -44,3 +44,11 @@ For more rapid developing, tests can also be run in watch mode.
 ```bash
 npm start
 ```
+
+### Run prettier
+
+The following command will run prettier on the TypeScript source code.
+
+```
+npm run fix:style
+```

@@ -13,20 +13,23 @@ This project should remove most of the boilerplate code required to create a mod
 - Integrated C++ dependency management using [CPM.cmake](https://github.com/TheLartians/CPM.cmake) 
 - Automatic bindings and typescript declarations using the [Glue](https://github.com/TheLartians/Glue) library
 - Integrated test suite using [jest](https://jestjs.io)
-- Code formatting through [prettier](https://prettier.io)
+- Code formatting enforced through [prettier](https://prettier.io) and [Format.cmake](https://github.com/TheLartians/Format.cmake)
 - Semi-automatic memory management using [scopes](#memory-management)
 - A [GitHub](.github/workflows/publish.yml) action that [publishes a new releases](https://github.com/mikeal/merge-release) to npm for each commit to master
 
 ## Usage
 
+### Get started
+
+Use this repo [as a template](https://github.com/TheLartians/modern-wasm-starter/generate) to quickly start your own projects!
+
 ### Build WebAssembly code
 
 To be able to build WebAssembly code from C++ using Emscripten, you must first [install and activate the emsdk](https://emscripten.org/docs/getting_started/downloads.html).
-To compile the WebAssembly, run the following commands from the project's root directory.
+To compile the WebAssembly, run the following command from the project's root directory.
 
 ```bash
 npm install
-npm run build:wasm
 ```
 
 This will create the files `source/WasmModule.js` and `source/WasmModule.d.ts` from the C++ code in the [wasm](wasm) directory.
@@ -38,7 +41,7 @@ After running the `build:wasm` script, the TypeScript declarations should be aut
 The following command will build and run the test suite.
 
 ```bash
-npm run test
+npm test
 ```
 
 For more rapid developing, tests can also be run in watch mode.
@@ -49,7 +52,7 @@ npm start
 
 ### Run prettier
 
-The following command will run prettier on the TypeScript source code.
+The following command will run prettier on the TypeScript and clang-format on the C++ source code.
 
 ```
 npm run fix:style

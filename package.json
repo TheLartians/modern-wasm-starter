@@ -23,12 +23,13 @@
   "scripts": {
     "build": "tsc && cp source/WasmModule.d.ts source/WasmModule.js dist/",
     "watch": "tsc --watch",
-    "prepare": "rm -rf dist && npm run build:wasm && npm run build",
-    "build:wasm": "emcmake cmake -Hwasm -Bbuild/wasm -DCMAKE_BUILD_TYPE=Release && cmake --build build/wasm -j8",
+    "prepare": "rm -rf dist && yarn run configure:wasm && npm run build:wasm && npm run build",
+    "configure:wasm": "emcmake cmake -Hwasm -Bbuild/wasm -DCMAKE_BUILD_TYPE=Release",
+    "build:wasm": "cmake --build build/wasm -j8",
     "build:wasm:debug": "emcmake cmake -Hwasm -Bbuild/wasm-debug && cmake --build build/wasm-debug -j8",
     "start": "jest --config jestconfig.json --watchAll",
-    "check:style": "prettier --check \"./**/*[!.d].ts\"",
-    "fix:style": "prettier --check \"./**/**[!.d].ts\"  --write",
+    "check:style": "prettier --check \"./**/*[!.d].ts\" && cmake --build build/wasm --target check-format",
+    "fix:style": "prettier --check \"./**/**[!.d].ts\" --write && cmake --build build/wasm --target fix-format",
     "test": "jest --config jestconfig.json"
   },
   "dependencies": {},

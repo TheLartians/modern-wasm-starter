@@ -14,16 +14,25 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Oz -g0")
 
 include(cmake/CPM.cmake)
 
+# add your dependency here and at `target_link_libraries` for wasmGlue below
 CPMAddPackage(
   NAME Greeter
   GITHUB_REPOSITORY TheLartians/ModernCppStarter
   VERSION 0.10
 )
 
+# EmGlue is used to create TypeScript bindings
 CPMAddPackage(
   NAME EmGlue
   VERSION 0.4
   GITHUB_REPOSITORY TheLartians/EmGlue
+)
+
+# Format.cmake is used to run clang-format
+CPMAddPackage(
+  NAME Format.cmake
+  GITHUB_REPOSITORY TheLartians/Format.cmake
+  VERSION 1.4
 )
 
 # ---- Create wams glue library ----

@@ -22,16 +22,8 @@ jobs:
       - name: install
         run: yarn install
 
-      - name: build
-        run: |
-          yarn run build:wasm
-          yarn run build
-
       - name: test
         run: yarn run test
-
-      - name: check style
-        run: yarn run check:style
 
       - name: Publish
         if: github.ref == 'refs/heads/master'

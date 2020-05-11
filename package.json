@@ -6,15 +6,14 @@
   "author": "Lars Melchior",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/TheLartians/modern-wasm-starter.git"
-  },  
+    "type": "git",
+    "url": "https://github.com/TheLartians/modern-wasm-starter.git"
+  },
   "devDependencies": {
     "@types/jest": "^25.2.1",
     "jest": "^26.0.1",
     "prettier": "^2.0.5",
     "ts-jest": "^25.5.1",
-    "tsc-watch": "^4.2.3",
     "typescript": "^3.8.3"
   },
   "files": [

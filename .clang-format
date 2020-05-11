@@ -1,18 +1,18 @@
 ---
   BasedOnStyle: Google
-  AccessModifierOffset: '-2'
-  AlignTrailingComments: 'true'
-  AllowAllParametersOfDeclarationOnNextLine: 'false'
-  AlwaysBreakTemplateDeclarations: 'No'
+  AccessModifierOffset: -2
+  AlignTrailingComments: true
+  AllowAllParametersOfDeclarationOnNextLine: false
+  AlwaysBreakTemplateDeclarations: false
   BreakBeforeBraces: Attach
-  ColumnLimit: '100'
-  ConstructorInitializerAllOnOneLineOrOnePerLine: 'true'
+  ColumnLimit: 100
+  ConstructorInitializerAllOnOneLineOrOnePerLine: true
   IncludeBlocks: Regroup
   IndentPPDirectives: AfterHash
-  IndentWidth: '2'
+  IndentWidth: 2
   NamespaceIndentation: All
   BreakBeforeBinaryOperators: All
-  BreakBeforeTernaryOperators: 'true'
+  BreakBeforeTernaryOperators: true
 ---
   # we use prettier for formatting TS code
   Language: JavaScript

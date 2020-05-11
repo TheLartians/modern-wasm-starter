@@ -62,7 +62,8 @@ npm run fix:style
 ## Memory management
 
 As JavaScript has no destructors, any created C++ objects must be deleted manually, or your webapp will suffer a memory leak.
-To simplify this, the project introduces scopes that semi-automatically take care of memory management , that can be used as illustrated below.
+To simplify this, the project introduces scopes that semi-automatically take care of memory management.
+The usage is illustrated below.
 
 ```ts
 import { withGreeter } from "modern-wasm-starter";
@@ -75,7 +76,7 @@ withGreeter(greeterModule => {
   // call a member function
   console.log(greeter.greet(greeterModule.LanguageCode.EN));
   
-  // any created instances will be deleted after the function returns (exception-safe)
+  // any created instances will be destroyed after the function exists
 });
 ```
 

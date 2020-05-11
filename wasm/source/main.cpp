@@ -5,7 +5,7 @@
 #include "wasmGlue.h"
 
 int main() {
-  auto element = greeterGlue();
+  auto element = wasmGlue();
   glue::emscripten::State state;
 
   // EmGlue internal funcions

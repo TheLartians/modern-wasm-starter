@@ -5,7 +5,7 @@
 #include <glue/enum.h>
 #include <greeter.h>
 
-glue::MapValue greeterGlue() {
+glue::MapValue wasmGlue() {
   using namespace greeter;
 
   auto lib = glue::createAnyMap();

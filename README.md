@@ -3,20 +3,20 @@
 
 # Modern WASM Starter
 
-A starter template to easily create WebAssembly projects for npm using type-safe C++ code with automatic declarations.
-This project should take care of most of the boilerplate code required to create a modern type-safe WebAssembly project.
+A starter template to easily create WebAssembly packages for npm using type-safe C++ code with automatic declarations.
+This project should take care of most of the boilerplate code required to create a modern and type-safe WebAssembly project.
 
 ## Features
 
-- Integrated node.js packaging and dependency management through npm
-- Type safety through TypeScript
-- CMake build system 
+- Integrated node.js packaging and dependency management through [npm](https://www.npmjs.com)
+- Type safety through [TypeScript](https://www.typescriptlang.org)
+- [CMake](https://cmake.org) build system
 - Integrated C++ dependency management using [CPM.cmake](https://github.com/TheLartians/CPM.cmake) 
 - Automatic bindings and typescript declarations using the [Glue](https://github.com/TheLartians/Glue) library
 - Integrated test suite using [jest](https://jestjs.io)
 - Code formatting enforced through [prettier](https://prettier.io) and [Format.cmake](https://github.com/TheLartians/Format.cmake)
 - Semi-automatic memory management using [scopes](#memory-management)
-- A [GitHub](.github/workflows/publish.yml) action that [publishes a new releases](https://github.com/mikeal/merge-release) to npm for each commit to master
+- A [GitHub action](.github/workflows/publish.yml) to automatically [update the npm release](https://github.com/mikeal/merge-release) for each commit to master
 
 ## Usage
 
@@ -27,15 +27,15 @@ Use this repo [as a template](https://github.com/TheLartians/modern-wasm-starter
 ### Build WebAssembly code
 
 To be able to build WebAssembly code from C++ using Emscripten, you must first [install and activate the emsdk](https://emscripten.org/docs/getting_started/downloads.html).
-To compile the WebAssembly, run the following command from the project's root directory.
+To compile the C++ code to WebAssembly, run the following command from the project's root directory.
 
 ```bash
 npm install
 ```
 
-This will create the files `source/WasmModule.js` and `source/WasmModule.d.ts` from the C++ code in the [wasm](wasm) directory.
-To bind your own project to JavaScript, add it as a CPM.cmake dependency in the [CMakeLists.txt](wasm/CMakeLists.txt) and define the bindings [wasmGlue.cpp](wasm/source/wasmGlue.cpp) source file.
-After running the `build:wasm` script, the TypeScript declarations should be automatically updated. 
+This will create the files `source/WasmModule.js` and `source/WasmModule.d.ts` from the C++ code in the [wasm](wasm) directory and transpile everything into a JavaScript module in the `dist` directory.
+To build your code as wasm, add it as a CPM.cmake dependency in the [CMakeLists.txt](wasm/CMakeLists.txt) file and define the bindings in the [wasmGlue.cpp](wasm/source/wasmGlue.cpp) source file.
+To update the wasm and TypeScript declarations, you can run `npm run build:wasm`. 
 
 ### Run tests
 
@@ -45,7 +45,7 @@ The following command will build and run the test suite.
 npm test
 ```
 
-For more rapid developing, tests can also be run in watch mode.
+For more rapid developing, tests can also be run in watch mode, which will automatically update on any code change to the TypeScript files.
 
 ```bash
 npm start
@@ -62,22 +62,22 @@ npm run fix:style
 ## Memory management
 
 As JavaScript has no destructors, any created C++ objects must be deleted manually, or your webapp will suffer a memory leak.
-To simplify this, the project introduces scopes that semi-automatically take care of memory management.
+To simplify this, the project introduces scoped helper functions that semi-automatically take care of memory management.
 The usage is illustrated below.
 
 ```ts
 import { withGreeter } from "modern-wasm-starter";
 
-// note: `withGreeter()` will run asynchronously and return a `Promise`
+// note: `withGreeter()` will run the callback asynchronously and return the result in a `Promise`
 withGreeter(greeterModule => {
-  // construct a new C++ Greeter instance
+  // construct a new C++ `Greeter` instance
   const greeter = new greeterModule.Greeter("Wasm");
 
   // call a member function
   console.log(greeter.greet(greeterModule.LanguageCode.EN));
   
-  // any created instances will be destroyed after the function exists
+  // any created C++ objects will be destroyed after the function exists, unless they are persisted
 });
 ```
 
-For additional techniques, such as local scopes or persisting values outside of the scope, see the [tests](__tests__/wasm.ts) or [API](source/wasmWrapper.ts).
+To see additional techniques, such as local scopes or persisting values outside of the scope, check out the [tests](__tests__/wasm.ts) or [API](source/wasmWrapper.ts).

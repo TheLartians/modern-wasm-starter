@@ -87,9 +87,7 @@ export function __getCurrentWasmScopeStackSize() {
 export function persistWasmValue<V>(value: V) {
   const scope = currentScope();
   if (scope) {
-    const idx = scope.indexOf(
-      (value as any)["__glue_instance"]
-    );
+    const idx = scope.indexOf((value as any)["__glue_instance"]);
     if (idx != -1) {
       scope.splice(idx, 1);
     } else {

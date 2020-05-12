@@ -11,6 +11,7 @@ import {
   __getCurrentWasmScope,
   __getCurrentWasmScopeStackSize,
 } from "../source/wasmWrapper";
+
 test("Calling wasm methods", async () => {
   await withGreeter((greeterModule) => {
     const greeter = new greeterModule.Greeter("Wasm");

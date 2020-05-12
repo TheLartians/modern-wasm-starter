@@ -7,17 +7,18 @@ import {
   deleteGreeterValue,
 } from "../source";
 
-import {
-  __getCurrentWasmScope,
-  __getCurrentWasmScopeStackSize,
-} from "../source/wasmWrapper";
-
 test("Calling wasm methods", async () => {
   await withGreeter((greeterModule) => {
     const greeter = new greeterModule.Greeter("Wasm");
     expect(greeter.greet(greeterModule.LanguageCode.EN)).toBe("Hello, Wasm!");
   });
 });
+
+// non-public helper functions for testing
+import {
+  __getCurrentWasmScope,
+  __getCurrentWasmScopeStackSize,
+} from "../source/wasmWrapper";
 
 test("Scoping", async () => {
   expect(__getCurrentWasmScopeStackSize()).toBe(0);

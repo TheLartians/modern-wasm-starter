@@ -33,8 +33,8 @@ To compile the C++ code to WebAssembly, run the following command from the proje
 npm install
 ```
 
-This will create the files `source/WasmModule.js` and `source/WasmModule.d.ts` from the C++ code in the [wasm](wasm) directory, as well as transpile everything into a JavaScript module in the `dist` directory.
-To bind your own project to JavaScript, add it as a CPM.cmake dependency in the [CMakeLists.txt](wasm/CMakeLists.txt) file and define the bindings in the [wasmGlue.cpp](wasm/source/wasmGlue.cpp) source file.
+This will create the files `source/WasmModule.js` and `source/WasmModule.d.ts` from the C++ code in the [wasm](wasm) directory and transpile everything into a JavaScript module in the `dist` directory.
+To build your code as wasm, add it as a CPM.cmake dependency in the [CMakeLists.txt](wasm/CMakeLists.txt) file and define the bindings in the [wasmGlue.cpp](wasm/source/wasmGlue.cpp) source file.
 To update the wasm and TypeScript declarations, you can run `npm run build:wasm`. 
 
 ### Run tests

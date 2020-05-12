@@ -25,16 +25,17 @@ endif(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
 include(${CPM_DOWNLOAD_LOCATION})
 
 # add your dependency here and at `target_link_libraries` for wasmGlue below
+# using the ModernCppStarter as an example project
 CPMAddPackage(
   NAME Greeter
   GITHUB_REPOSITORY TheLartians/ModernCppStarter
   VERSION 0.10
 )
-
-# EmGlue is used to create TypeScript bindings
+  
+# EmGlue is used to create the TypeScript declarations and the JavaScript bindings
 CPMAddPackage(
   NAME EmGlue
-  VERSION 0.4
+  VERSION 0.6.1
   GITHUB_REPOSITORY TheLartians/EmGlue
 )
 

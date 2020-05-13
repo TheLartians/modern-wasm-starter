@@ -45,7 +45,7 @@ The following command will build and run the test suite.
 npm test
 ```
 
-For more rapid developing, tests can also be run in watch mode, which will automatically update on any code change to the TypeScript files.
+For rapid developing, tests can also be started in watch mode, which will automatically run on any code change to the TypeScript or JavaScript sources.
 
 ```bash
 npm start
@@ -58,6 +58,12 @@ The following command will run prettier on the TypeScript and clang-format on th
 ```
 npm run fix:style
 ```
+
+## Writing bindings
+
+This starter uses the Glue project to create bindings and declarations.
+Update the [wasmGlue.cpp](wasm/source/wasmGlue.cpp) source files to expose new classes or functions.
+See the [Glue](https://github.com/TheLartians/Glue) or [EmGlue](https://github.com/TheLartians/EmGlue) projects for documentation and details.
 
 ## Memory management
 

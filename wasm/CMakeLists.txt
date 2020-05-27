@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Oz -g0")
 # ---- Fetch CPM ----
 
 set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM.cmake")
-set(CPM_VERSION 0.23)
+set(CPM_VERSION 0.25)
 
 if(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
   message(STATUS "Downloading CPM.cmake")
@@ -23,6 +23,7 @@ endif(NOT EXISTS ${CPM_DOWNLOAD_LOCATION})
 # See https://github.com/TheLartians/CPM.cmake for more info.
 
 include(${CPM_DOWNLOAD_LOCATION})
+CPMUsePackageLock(package-lock.cmake)
 
 # add your dependency here and at `target_link_libraries` for wasmGlue below
 # using the ModernCppStarter as an example project

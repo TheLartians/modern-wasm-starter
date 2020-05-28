@@ -51,7 +51,7 @@ For rapid developing, tests can also be started in watch mode, which will automa
 npm start
 ```
 
-### Run prettier
+### Fix code style
 
 The following command will run prettier on the TypeScript and clang-format on the C++ source code.
 
@@ -63,7 +63,7 @@ npm run fix:style
 
 This starter uses the Glue project to create bindings and declarations.
 Update the [wasmGlue.cpp](wasm/source/wasmGlue.cpp) source files to expose new classes or functions.
-See the [Glue](https://github.com/TheLartians/Glue) or [EmGlue](https://github.com/TheLartians/EmGlue) projects for documentation and details.
+See the [Glue](https://github.com/TheLartians/Glue) or [EmGlue](https://github.com/TheLartians/EmGlue) projects for documentation and examples.
 
 ## Memory management
 

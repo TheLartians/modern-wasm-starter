@@ -51,7 +51,7 @@ For rapid developing, tests can also be started in watch mode, which will automa
 npm start
 ```
 
-### Run prettier
+### Fix code style
 
 The following command will run prettier on the TypeScript and clang-format on the C++ source code.
 
@@ -63,18 +63,18 @@ npm run fix:style
 
 This starter uses the Glue project to create bindings and declarations.
 Update the [wasmGlue.cpp](wasm/source/wasmGlue.cpp) source files to expose new classes or functions.
-See the [Glue](https://github.com/TheLartians/Glue) or [EmGlue](https://github.com/TheLartians/EmGlue) projects for documentation and details.
+See the [Glue](https://github.com/TheLartians/Glue) or [EmGlue](https://github.com/TheLartians/EmGlue) projects for documentation and examples.
 
 ## Memory management
 
-As JavaScript has no destructors, any created C++ objects must be deleted manually, or your webapp will suffer a memory leak.
-To simplify this, the project introduces scoped helper functions that semi-automatically take care of memory management.
+As JavaScript has no destructors, any created C++ objects must be deleted manually, or they will be leaked.
+To simplify this, the project introduces memory scopes that semi-automatically take care of memory management.
 The usage is illustrated below.
 
 ```ts
 import { withGreeter } from "modern-wasm-starter";
 
-// note: `withGreeter()` will run the callback asynchronously and return the result in a `Promise`
+// `withGreeter()` will run the callback asynchronously in a memory scope and return the result in a `Promise`
 withGreeter(greeterModule => {
   // construct a new C++ `Greeter` instance
   const greeter = new greeterModule.Greeter("Wasm");
@@ -82,8 +82,8 @@ withGreeter(greeterModule => {
   // call a member function
   console.log(greeter.greet(greeterModule.LanguageCode.EN));
   
-  // any created C++ objects will be destroyed after the function exists, unless they are persisted
+  // any created C++ objects will be destroyed after the function exits, unless they are persisted
 });
 ```
 
-To see additional techniques, such as local scopes or persisting values outside of the scope, check out the [tests](__tests__/wasm.ts) or [API](source/wasmWrapper.ts).
+To see additional techniques, such as synchronous scopes or persisting and removing values outside of the scope, check out the [tests](__tests__/wasm.ts) or [API](source/wasmWrapper.ts).

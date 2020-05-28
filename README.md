@@ -74,7 +74,7 @@ The usage is illustrated below.
 ```ts
 import { withGreeter } from "modern-wasm-starter";
 
-// note: `withGreeter()` will run the callback asynchronously and return the result in a `Promise`
+// `withGreeter()` will run the callback asynchronously and return the result in a `Promise`
 withGreeter(greeterModule => {
   // construct a new C++ `Greeter` instance
   const greeter = new greeterModule.Greeter("Wasm");
@@ -82,7 +82,7 @@ withGreeter(greeterModule => {
   // call a member function
   console.log(greeter.greet(greeterModule.LanguageCode.EN));
   
-  // any created C++ objects will be destroyed after the function exists, unless they are persisted
+  // any created C++ objects will be destroyed after the function exits, unless they are persisted
 });
 ```
 

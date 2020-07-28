@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: mymindstorm/setup-emsdk@v4
+      - uses: mymindstorm/setup-emsdk@v6
 
       - name: install
         run: yarn install

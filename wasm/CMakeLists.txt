@@ -23,16 +23,19 @@ endif()
 # See https://github.com/TheLartians/CPM.cmake for more info.
 
 include(${CPM_DOWNLOAD_LOCATION})
+
+# exact package versions are defined in package-lock.cmake
+# this helps us specify exact versions of transitive dependencies
 CPMUsePackageLock(package-lock.cmake)
 
-# add your dependency here and at `target_link_libraries` for wasmGlue below
 # using the ModernCppStarter as an example project
+# replace this with your library
 CPMAddPackage(
   NAME Greeter
   GITHUB_REPOSITORY TheLartians/ModernCppStarter
   VERSION 0.10
 )
-  
+
 # EmGlue is used to create the TypeScript declarations and the JavaScript bindings
 CPMAddPackage(
   NAME EmGlue
@@ -51,6 +54,8 @@ CPMAddPackage(
 
 add_library(wasmGlue source/wasmGlue.cpp)
 set_target_properties(wasmGlue PROPERTIES CXX_STANDARD 17)
+
+# link dependencies, replace `Greeter` with your library
 target_link_libraries(wasmGlue PUBLIC Glue Greeter)
 
 # ---- Create main library ----

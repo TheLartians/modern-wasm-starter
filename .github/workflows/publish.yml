@@ -19,8 +19,10 @@ jobs:
 
       - uses: actions/cache@v2
         with:
-          path: "**/cpm_modules"
-          key: cpm-modules-${{ hashFiles('**/CMakeLists.txt', '**/*.cmake') }}
+          path: |
+            **/cpm_modules
+            **/node_modules
+          key: cpm-modules-${{ hashFiles('**/CMakeLists.txt', '**/*.cmake', '**/yarn.lock') }}
 
       - uses: mymindstorm/setup-emsdk@v6
         with:

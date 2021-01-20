@@ -3,7 +3,7 @@
 
 #include <glue/class.h>
 #include <glue/enum.h>
-#include <greeter.h>
+#include <greeter/greeter.h>
 
 glue::MapValue wasmGlue() {
   using namespace greeter;

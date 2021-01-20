@@ -16,13 +16,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - uses: mymindstorm/setup-emsdk@v6
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/cpm_modules
+            **/node_modules
+          key: cpm-modules-${{ hashFiles('**/CMakeLists.txt', '**/*.cmake', '**/yarn.lock') }}
+
+      - uses: mymindstorm/setup-emsdk@v7
         with:
           version: 1.39.20
 
       - name: install
+        env:
+          CPM_SOURCE_CACHE: ${{ github.workspace }}/cpm_modules
         run: yarn install
 
       - name: test

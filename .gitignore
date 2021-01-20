@@ -1,5 +1,6 @@
 /build
 /node_modules
+/cpm_modules
 /dist
 /.vscode
 /source/WasmModule.d.ts

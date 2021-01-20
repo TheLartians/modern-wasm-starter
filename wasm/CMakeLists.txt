@@ -8,21 +8,10 @@ project(TypeScriptXX
 
 set(CMAKE_CXX_FLAGS_RELEASE "-Oz -g0")
 
-# ---- Fetch CPM ----
-
-set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM.cmake")
-set(CPM_DOWNLOAD_VERSION 0.25.1)
-
-if(NOT (EXISTS ${CPM_DOWNLOAD_LOCATION} AND CPM_VERSION STREQUAL CPM_DOWNLOAD_VERSION))
-  message(STATUS "Downloading CPM.cmake")
-  file(DOWNLOAD https://github.com/TheLartians/CPM.cmake/releases/download/v${CPM_DOWNLOAD_VERSION}/CPM.cmake ${CPM_DOWNLOAD_LOCATION})
-endif()
-
 # ---- Dependencies ----
 # Add C++ dependencies through CPM.cmake.
 # See https://github.com/TheLartians/CPM.cmake for more info.
-
-include(${CPM_DOWNLOAD_LOCATION})
+include(cmake/CPM.cmake)
 
 # exact package versions are defined in package-lock.cmake
 # this helps us specify exact versions of transitive dependencies
@@ -33,7 +22,7 @@ CPMUsePackageLock(package-lock.cmake)
 CPMAddPackage(
   NAME Greeter
   GITHUB_REPOSITORY TheLartians/ModernCppStarter
-  VERSION 0.10
+  VERSION 0.16.1
 )
 
 # EmGlue is used to create the TypeScript declarations and the JavaScript bindings
@@ -47,7 +36,7 @@ CPMAddPackage(
 CPMAddPackage(
   NAME Format.cmake
   GITHUB_REPOSITORY TheLartians/Format.cmake
-  VERSION 1.4
+  VERSION 1.6
 )
 
 # ---- Create wams glue library ----
@@ -55,8 +44,8 @@ CPMAddPackage(
 add_library(wasmGlue source/wasmGlue.cpp)
 set_target_properties(wasmGlue PROPERTIES CXX_STANDARD 17)
 
-# link dependencies, replace `Greeter` with your library
-target_link_libraries(wasmGlue PUBLIC Glue Greeter)
+# link dependencies, replace `Greeter::Greeter` with your library
+target_link_libraries(wasmGlue PUBLIC Glue Greeter::Greeter)
 
 # ---- Create main library ----
 

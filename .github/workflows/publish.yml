@@ -24,7 +24,7 @@ jobs:
             **/node_modules
           key: cpm-modules-${{ hashFiles('**/CMakeLists.txt', '**/*.cmake', '**/yarn.lock') }}
 
-      - uses: mymindstorm/setup-emsdk@v6
+      - uses: mymindstorm/setup-emsdk@v7
         with:
           version: 1.39.20
 

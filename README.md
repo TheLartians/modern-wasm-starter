@@ -37,10 +37,6 @@ This will create the files `source/WasmModule.js` and `source/WasmModule.d.ts` f
 To build your code as wasm, add it as a CPM.cmake dependency in the [CMakeLists.txt](wasm/CMakeLists.txt) file and define the bindings in the [wasmGlue.cpp](wasm/source/wasmGlue.cpp) source file.
 To update the wasm and TypeScript declarations, you can run `npm run build:wasm`. 
 
-Note: due to what seems to be a [compiler bug](https://github.com/emscripten-core/emscripten/issues/12238), some emsdk versions seem to crash the compiler.
-The most recently tested working version is `1.39.20`.
-
-
 ### Run tests
 
 The following command will build and run the test suite.

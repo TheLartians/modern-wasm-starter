@@ -9,6 +9,7 @@
     "rootDir": "source",
     "outDir": "dist",
     "declaration": true,
+    "allowJs": true,
   },
   "include": ["source"],
   "exclude": ["node_modules", "dist"],

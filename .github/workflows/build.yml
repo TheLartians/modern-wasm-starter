@@ -8,10 +8,6 @@ on:
     branches:
       - master
 
-env:
-  CTEST_OUTPUT_ON_FAILURE: 1
-  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-    
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,6 +25,11 @@ jobs:
         with:
           version: 2.0.31
 
+      - name: Install C++/CMake style checkers
+        run: |
+          brew install clang-format
+          pip3 install cmake_format==0.6.11 pyyaml
+
       - name: install
         env:
           CPM_SOURCE_CACHE: ${{ github.workspace }}/cpm_modules
@@ -36,9 +37,6 @@ jobs:
 
       - name: test
         run: yarn run test
-
-      - name: install clang-format
-        run: sudo apt install clang-format
 
       - name: check style
         run: yarn run check:style

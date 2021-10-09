@@ -26,18 +26,10 @@ CPMAddPackage(
 )
 
 # EmGlue is used to create the TypeScript declarations and the JavaScript bindings
-CPMAddPackage(
-  NAME EmGlue
-  VERSION 0.6.1
-  GITHUB_REPOSITORY TheLartians/EmGlue
-)
+CPMAddPackage("gh:TheLartians/EmGlue@0.6.1")
 
 # Format.cmake is used to run clang-format
-CPMAddPackage(
-  NAME Format.cmake
-  GITHUB_REPOSITORY TheLartians/Format.cmake
-  VERSION 1.6
-)
+CPMAddPackage("gh:Format.cmake@1.7.2")
 
 # ---- Create wams glue library ----
 

@@ -36,7 +36,7 @@ jobs:
       - name: install format dependencies
         run: |
           sudo apt install clang-format
-          pip3 install cmake_format==0.6.11 pyyaml
+          pip install cmake_format==0.6.11 pyyaml
 
       - name: check style
         run: yarn run check:style

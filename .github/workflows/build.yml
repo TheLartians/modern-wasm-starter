@@ -1,4 +1,4 @@
-name: Build
+name: Check
 
 on:
   push:
@@ -26,9 +26,7 @@ jobs:
           version: 2.0.31
 
       - name: Install C++/CMake style checkers
-        run: |
-          brew install clang-format
-          pip3 install cmake_format==0.6.11 pyyaml
+        run: pip3 install clang-format==14.0.6 cmake_format==0.6.11 pyyaml
 
       - name: install
         env:

@@ -1,4 +1,4 @@
-![Build](https://github.com/TheLartians/modern-wasm-starter/workflows/Build/badge.svg)
+![Check](https://github.com/TheLartians/modern-wasm-starter/workflows/Check/badge.svg)
 [![npm version](https://badge.fury.io/js/modern-wasm-starter.svg)](https://badge.fury.io/js/modern-wasm-starter)
 
 # Modern WASM Starter
